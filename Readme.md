@@ -1,4 +1,6 @@
-[![Build Status](https://travis-ci.org/martinheidegger/package-missing.svg?branch=master)](https://travis-ci.org/martinheidegger/package-missing)
+[![Build Status](https://travis-ci.org/martinheidegger/package-missing.svg?branch=master)](https://travis-ci.org/martinheidegger/package-missing) [![Coverage Status](https://coveralls.io/repos/github/martinheidegger/package-missing/badge.svg)](https://coveralls.io/github/martinheidegger/package-missing)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+
 # package-missing
 
 This, very simple but incredibly useful package contains a Constructor for the `PackageMissingError`.
