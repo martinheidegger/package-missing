@@ -1,0 +1,17 @@
+{
+  "name": "package-missing",
+  "version": "1.0.0",
+  "description": "This very simple but incredibly useful package contains a Constructor for the `PackageMissingError`.",
+  "main": "PackageMissingError.js",
+  "scripts": {
+    "test": "standard && tap --cov test/*.js"
+  },
+  "keywords": ["error", "concept", "plugins", "integration"],
+  "author": "Martin Heidegger <martin.heidegger@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "standard": "^8.0.0",
+    "tap": "^7.0.0"
+  },
+  "dependencies": {}
+}
