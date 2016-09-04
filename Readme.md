@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/martinheidegger/package-missing.svg?branch=master)](https://travis-ci.org/martinheidegger/package-missing)
 # package-missing
 
 This, very simple but incredibly useful package contains a Constructor for the `PackageMissingError`.
