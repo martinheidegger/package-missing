@@ -14,7 +14,7 @@ const PackageMissingError = require('package-missing')
 const task = 'Can not parse the file test.yml'
 
 // What packages can be installed to make this work?
-const recommendedPackages = [ 'js-yaml' ]
+const recommendedPackages = [ 'js-yaml', 'yaml' ]
 
 const error = new PackageMissingError(task, recommendedPackages)
 
@@ -31,7 +31,7 @@ error.recommendedPackages === recommendedPackages
 // The message recommends to install the mentioned packages
 error.message === error.code + ': ' + error.message + '\n'
     + 'This error can be easily fixed by running ONE of the following commands:\n'
-    + recommendedPackages.map((pkg) => '- npm install ' + pkg + ' --save').join('\n')
+    + recommendedPackages.map((pkg) => '- $ npm install ' + pkg + ' --save').join('\n')
 
 // The error comes with a stack, but if you don't like it ...
 typeof error.stack === 'string'

@@ -75,14 +75,24 @@ test('The error should maintain the task and recommended packages.', function (t
   t.equal(err.code, 'EPACKAGEMISSING')
   t.end()
 })
-test('The error should compile a dependable message', function (t) {
+test('The error should compile a dependable message.', function (t) {
+  var packages = ['bar']
+  var task = 'foo'
+  var err = new PackageMissingError(task, packages)
+  t.equal(err.message, 'EPACKAGEMISSING: ' + task + '\n' +
+    'This error can be easily fixed by running the following command:\n' +
+    '$ npm install --save bar'
+  )
+  t.end()
+})
+test('The error should compile a dependable message that is different for multiline packages', function (t) {
   var packages = ['bar', 'baz']
   var task = 'foo'
   var err = new PackageMissingError(task, packages)
   t.equal(err.message, 'EPACKAGEMISSING: ' + task + '\n' +
     'This error can be easily fixed by running ONE of the following commands:\n' +
-    '- npm install bar --save\n' +
-    '- npm install baz --save'
+    '- $ npm install --save bar\n' +
+    '- $ npm install --save baz'
   )
   t.end()
 })

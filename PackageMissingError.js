@@ -1,6 +1,8 @@
 'use strict'
 
 var assert = require('assert')
+var MANY_MSG = 'ONE of the following commands:\n'
+var ONE_MSG = 'the following command:\n$ npm install --save '
 
 function PackageMissingError (task, recommendedPackages) {
   if (!(this instanceof PackageMissingError)) {
@@ -18,11 +20,15 @@ function PackageMissingError (task, recommendedPackages) {
   this.code = 'EPACKAGEMISSING'
   this.task = task
   this.recommendedPackages = recommendedPackages
-  this.message = this.code + ': ' + this.task +
-    '\nThis error can be easily fixed by running ONE of the following commands:\n' +
-    recommendedPackages.map(function (pkg) {
-      return '- npm install ' + pkg + ' --save'
+  this.message = this.code + ': ' + this.task + '\nThis error can be easily fixed by running ' +
+    (
+      (recommendedPackages.length === 1)
+      ? ONE_MSG + recommendedPackages[0]
+      : MANY_MSG + recommendedPackages.map(function (pkg) {
+        return '- $ npm install --save ' + pkg
     }).join('\n')
+    )
+
   Error.captureStackTrace(this)
 }
 
