@@ -50,6 +50,12 @@ test('Allow construction without new.', function (t) {
   t.ok(err instanceof PackageMissingError)
   t.end()
 })
+test('Allow construction with just a string.', function (t) {
+  var err = PackageMissingError('foo', 'bar')
+  t.ok(err instanceof Error)
+  t.ok(err instanceof PackageMissingError)
+  t.end()
+})
 test('The inheritance should be correct.', function (t) {
   var err = new PackageMissingError('foo', ['bar'])
   t.ok(err instanceof Error)

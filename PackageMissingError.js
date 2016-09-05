@@ -13,7 +13,10 @@ function PackageMissingError (task, recommendedPackages) {
   equal(typeof task, 'string', 'Task (arg#0) needs to be a string.')
   task = task.trim()
   ok(task.length > 0, 'The task (arg#0) needs to contain something.')
-  ok(Array.isArray(recommendedPackages), 'The recommended packages (arg#1) has to be an array.')
+  if (typeof recommendedPackages === 'string') {
+    recommendedPackages = [recommendedPackages]
+  }
+  ok(Array.isArray(recommendedPackages), 'The recommended packages (arg#1) has to be an array or a string.')
   ok(recommendedPackages.length > 0, 'The recommended packages (arg#1) may not be empty.')
   recommendedPackages.forEach(function (pkg, index) {
     equal(typeof pkg, 'string', 'The recommended package (arg#1#' + index + ': ' + pkg + ' has to be a string.')
@@ -28,7 +31,7 @@ function PackageMissingError (task, recommendedPackages) {
       ? ONE_MSG + recommendedPackages[0]
       : MANY_MSG + recommendedPackages.map(function (pkg) {
         return '- $ npm install --save ' + pkg
-    }).join('\n')
+      }).join('\n')
     )
 
   Error.captureStackTrace(this)
